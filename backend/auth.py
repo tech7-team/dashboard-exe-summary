@@ -1,7 +1,9 @@
 import yaml
+from pathlib import Path
 
 def get_config():
-    with open("config.yaml") as config_file:
+    configPath = Path("./config.yaml")
+    with open(configPath.absolute()) as config_file:
         config = yaml.safe_load(config_file)
     return config
 
