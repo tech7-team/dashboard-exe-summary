@@ -5,6 +5,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 
+import { BASE_URL } from "../constants";
+
 function UserChart() {
   const dropdownItems = [
     { label: "Work Packages", value: "Work Packages" },
@@ -30,7 +32,7 @@ function UserChart() {
 
   async function fetchUserData(start = "", end = "") {
     try {
-      const url = "https://sw.infoglobal.id/nirmala/backend/get-assignee-details";
+      const url = BASE_URL + "/get-assignee-details";
       const response = await axios.get(
         start && end ? `${url}?start_date=${start}&end_date=${end}` : url
       );
@@ -61,7 +63,7 @@ function UserChart() {
   async function fetchDataWithoutDate() {
     try {
       const userResponse = await axios.get(
-        "https://sw.infoglobal.id/nirmala/backend/get-assignee-details"
+        BASE_URL + "/get-assignee-details"
       );
       const userData = userResponse.data;
 
@@ -192,7 +194,7 @@ function UserChart() {
 
   async function fetchTableDataWithoutDate() {
     try {
-      const url = "https://sw.infoglobal.id/nirmala/backend/get-assignee-wp-details";
+      const url = BASE_URL + "/get-assignee-wp-details";
       const response = await axios.get(url);
 
       const userData = response.data;
@@ -226,7 +228,7 @@ function UserChart() {
       await fetchTableDataWithoutDate();
     } else {
       try {
-        const url = "https://sw.infoglobal.id/nirmala/backend/get-assignee-wp-details";
+        const url = BASE_URL + "/get-assignee-wp-details";
         const response = await axios.get(
           `${url}?start_date=${formatDate(startDate)}&end_date=${formatDate(endDate)}`
         );

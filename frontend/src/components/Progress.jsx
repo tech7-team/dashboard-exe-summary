@@ -3,6 +3,8 @@ import BarChart from "./BarChart";
 import { Container, Row } from "react-bootstrap";
 import axios from "axios";
 
+import { BASE_URL } from "../constants";
+
 function Progress() {
   const [projectProgress, setProjectProgress] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,7 +15,7 @@ function Progress() {
 
   async function fetchData() {
     try {
-      const response = await axios.get("https://sw.infoglobal.id/nirmala/backend/get-progress-project");
+      const response = await axios.get(BASE_URL + "/get-progress-project");
       const data = response.data;
       setProjectProgress(data);
       setLoading(false); // Data fetched, set loading to false

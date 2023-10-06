@@ -4,6 +4,8 @@ import { Bar } from "react-chartjs-2";
 import Profil from "../assets/profile.png";
 import axios from "axios";
 
+import { BASE_URL } from "../constants";
+
 function StackedChart({ chartData, handleClick }) {
   return (
     <div>
@@ -137,8 +139,8 @@ function UserProgress() {
     setIsLoadingData(true);
     try {
       const [userProgressResponse, progressProjectResponse] = await Promise.all([
-        axios.get("https://sw.infoglobal.id/nirmala/backend/get-progress-assignee-total"),
-        axios.get("https://sw.infoglobal.id/nirmala/backend/get-progress-assignee")
+        axios.get(BASE_URL + "/get-progress-assignee-total"),
+        axios.get(BASE_URL + "/get-progress-assignee")
       ]);
 
       const userProgressData = userProgressResponse.data;
