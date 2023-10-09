@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Chart } from 'react-google-charts';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
+import { BASE_URL } from '../constants';
 
 const colorArray = [
   '#33FF57',
@@ -26,8 +27,8 @@ const Timeline = () => {
     try {
       const url =
         view === 'Phase'
-          ? 'https://sw.infoglobal.id/nirmala/backend/get-phase-by-project'
-          : 'https://sw.infoglobal.id/nirmala/backend/get-miles-by-project';
+          ? BASE_URL + '/get-phase-by-project'
+          : BASE_URL + '/get-miles-by-project';
 
       const response = await axios.get(url);
       const data = response.data;
